@@ -1,4 +1,4 @@
-# Generator
+# Generator Project
 
 Un outil CLI pour générer rapidement des projets à partir de templates prédéfinis.
 
@@ -20,27 +20,21 @@ Un outil CLI pour générer rapidement des projets à partir de templates préd�
 
 ## 🛠️ Installation
 
-### Installation locale
-
+1. Cloner le projet :
 ```bash
-# Cloner le repository
-git clone https://github.com/votre-username/generator.git
-cd generator
-
-# Installer les dépendances
-go mod download
-
-# Compiler le projet
-go build -o generator
-
-# Installer globalement (optionnel)
-sudo mv generator /usr/local/bin/
+git clone https://github.com/votre-username/generator-project.git
+cd generator-project
 ```
 
-### Installation via Go
-
+2. Compiler le projet :
 ```bash
-go install github.com/votre-username/generator@latest
+go build -o generator
+```
+
+3. Installer l'exécutable globalement :
+```bash
+sudo cp generator /usr/local/bin/
+sudo chmod +x /usr/local/bin/generator
 ```
 
 ## 📁 Structure du Projet
@@ -67,36 +61,20 @@ go install github.com/votre-username/generator@latest
 
 ## 🎯 Utilisation
 
-### Commandes Disponibles
+Une fois installé, vous pouvez utiliser la commande `generator` depuis n'importe où :
 
 ```bash
-# Afficher l'aide
-generator --help
-
-# Générer un nouveau projet
-generator generate [template] [project_name] [flags]
-
 # Lister les templates disponibles
 generator list
 
-# Afficher les informations sur un template
-generator info [template]
-```
+# Voir les informations sur un template
+generator info go-api
 
-### Exemples
+# Générer un nouveau projet
+generator generate go-api mon-api
 
-```bash
-# Générer un projet React TypeScript
-generator generate react-ts mon-app
-
-# Générer un projet Go API dans un dossier spécifique
-generator generate go-api mon-api --output ./projects
-
-# Voir les templates disponibles
-generator list
-
-# Voir les informations sur le template React TypeScript
-generator info react-ts
+# Générer dans un dossier spécifique
+generator generate go-api mon-api --output /chemin/vers/dossier
 ```
 
 ## 🧪 Tests
@@ -111,18 +89,25 @@ go test ./... -cover
 
 ## 🔧 Configuration
 
-### Variables d'Environnement
+Le programme utilise deux emplacements principaux :
 
-- `GENERATOR_TEMPLATES_DIR` : Chemin vers le dossier des templates (par défaut : "./templates")
-- `GENERATOR_OUTPUT_DIR` : Dossier de sortie par défaut (optionnel)
+1. **Templates** : Les templates sont stockés dans le dossier `templates` du projet. Le programme trouve automatiquement ce dossier en fonction de l'emplacement de l'exécutable.
 
-### Fichier de Configuration
+2. **Configuration** : Un fichier de configuration est créé automatiquement dans `~/.config/generator/config.yaml` lors de la première utilisation.
 
-Créer un fichier `config.yaml` dans le dossier de configuration :
+### Variables d'environnement
 
+Vous pouvez personnaliser le comportement du programme en utilisant les variables d'environnement suivantes :
+
+- `GENERATOR_TEMPLATES_DIR` : Chemin vers le dossier des templates (par défaut : dossier `templates` du projet)
+- `GENERATOR_OUTPUT_DIR` : Répertoire par défaut pour les nouveaux projets générés
+
+### Fichier de configuration
+
+Le fichier de configuration par défaut (`~/.config/generator/config.yaml`) contient :
 ```yaml
-templates_dir: "./templates"
-output_dir: "./projects"
+# Configuration par défaut de generator
+output_dir: ~/projects  # Répertoire par défaut pour les nouveaux projets
 ```
 
 ## 📦 Templates Disponibles
@@ -157,18 +142,21 @@ output_dir: "./projects"
 - Documentation
 - Logging
 
-## 🤝 Contribution
+## 🤝 Contribution et Fork
 
+Ce projet est open source et peut être librement forké et utilisé selon vos besoins. Les contributions sont les bienvenues ! N'hésitez pas à :
 1. Fork le projet
-2. Créer une branche pour votre fonctionnalité (`git checkout -b feature/AmazingFeature`)
-3. Commit vos changements (`git commit -m 'Add some AmazingFeature'`)
-4. Push vers la branche (`git push origin feature/AmazingFeature`)
+2. Créer une branche pour votre fonctionnalité
+3. Commiter vos changements
+4. Pousser vers la branche
 5. Ouvrir une Pull Request
 
 ## 📝 Licence
 
 Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
 
-## 📞 Support
+## 📞 Support et Contact
 
-Pour toute question ou problème, veuillez ouvrir une issue sur GitHub.
+Pour toute question, suggestion ou discussion sur le projet, vous pouvez :
+- Ouvrir une issue sur GitHub
+- Me contacter sur LinkedIn : [Votre Nom](https://www.linkedin.com/in/votre-profil)

@@ -4,7 +4,8 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
-	"strings"
+
+	"generator/internal/config"
 
 	"github.com/spf13/cobra"
 )
@@ -30,7 +31,9 @@ Exemple:
 }
 
 func showTemplateInfo(templateName string) {
-	readmePath := filepath.Join("templates", templateName, "README.md")
+	// Charger la configuration
+	cfg := config.Load()
+	readmePath := filepath.Join(cfg.TemplatesDir, templateName, "README.md")
 	
 	// Vérifier si le template existe
 	if _, err := os.Stat(readmePath); os.IsNotExist(err) {
